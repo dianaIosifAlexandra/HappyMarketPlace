@@ -1,0 +1,25 @@
+@import '../../style/variables.scss';
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.logoImage {
+  height: 2rem;
+  width: 2rem;
+}
+
+.linkPage {
+  text-decoration: none;
+  color: $color-royal-blue;
+}
+
+.loginBtn {
+  text-decoration: none;
+  color: $color-base-white;
+}
+
+.menuBtn.menuBtn {
+  color: $color-base-white;
+}
