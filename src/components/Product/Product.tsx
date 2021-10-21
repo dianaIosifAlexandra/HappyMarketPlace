@@ -1,9 +1,14 @@
 import React, { FC } from 'react';
+import ProductModel from '../../models/Product';
 
 import style from './Product.module.scss';
 
-const Product: FC = () => {
-  return <div>Product component works!</div>;
+interface Props {
+  productItem: ProductModel;
+}
+
+const Product: FC<Props> = ({ productItem }) => {
+  return <div>{productItem.title}</div>;
 };
 
 export default Product;

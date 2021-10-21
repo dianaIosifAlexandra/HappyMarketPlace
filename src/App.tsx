@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './App.css';
+import './App.scss';
 import ReactRouter from './components/Routes/Routes';
 
 const App: FC = () => {
