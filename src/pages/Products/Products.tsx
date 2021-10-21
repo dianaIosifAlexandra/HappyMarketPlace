@@ -1,6 +1,6 @@
 import React, { Dispatch, FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import Navbar from '../../components/Navbar/Navbar';
+import Layout from '../../components/Layout/Layout';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectProduct } from '../../store/selectors/ProductSelector';
 import { getProductListThunk } from '../../store/thunks/ProductThunk';
@@ -18,10 +18,7 @@ const Products: FC = () => {
   );
 
   return (
-    <div>
-      <header>
-        <Navbar />
-      </header>
+    <Layout>
       <main>
         Products component works!
         <br />
@@ -32,7 +29,7 @@ const Products: FC = () => {
           </div>
         ))}
       </main>
-    </div>
+    </Layout>
   );
 };
 
