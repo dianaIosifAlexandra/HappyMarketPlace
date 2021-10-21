@@ -1,8 +1,4 @@
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { AppThunk } from '../types/types';
 import ProductModel from '../../models/Product';
-import ProductService from '../../services/ProductService';
 
 export enum ProductActionTypes {
   GetProductListRequest = 'PRODUCT-LIST--GET-PRODUCTS-REQUEST',
@@ -28,11 +24,11 @@ interface GetProductListSuccess {
   };
 }
 
-const getProductListRequest = (): GetProductListRequest => ({
+export const getProductListRequest = (): GetProductListRequest => ({
   type: ProductActionTypes.GetProductListRequest,
 });
 
-const getProductListFailure = ({
+export const getProductListFailure = ({
   error,
 }: {
   error: string;
@@ -43,7 +39,7 @@ const getProductListFailure = ({
   },
 });
 
-const getProductListSuccess = ({
+export const getProductListSuccess = ({
   newProductList,
 }: {
   newProductList: ProductModel[];
@@ -53,19 +49,6 @@ const getProductListSuccess = ({
     newProductList,
   },
 });
-
-export const getProductListThunk =
-  (): AppThunk => (dispatch: ThunkDispatch<never, never, AnyAction>) => {
-    dispatch(getProductListRequest());
-
-    ProductService.getProducts()
-      .then((response) => {
-        dispatch(getProductListSuccess({ newProductList: response.data }));
-      })
-      .catch((error) => {
-        dispatch(getProductListFailure({ error }));
-      });
-  };
 
 export type ProductListActions =
   | GetProductListRequest

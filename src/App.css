@@ -4,7 +4,6 @@
 
 @media (min-width: 600px) {
   .App {
-    display: flex;
     justify-content: space-between;
   }
 }

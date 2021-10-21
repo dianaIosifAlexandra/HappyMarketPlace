@@ -7,19 +7,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import MenuIcon from '@mui/icons-material/Menu';
-import Products from '../../pages/Products/Products';
-import Login from '../../pages/Login/Login';
+
+import CustomDrawer from '../Drawer/Drawer';
 
 import logoImage from '../../assests/happy-emoji-by-google.png';
 import style from './Navbar.module.scss';
-
-const routes = {
-  products: '/',
-  login: '/login',
-};
 
 type Anchor = 'left';
 
@@ -49,18 +42,7 @@ const Navbar: FC = () => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        <ListItem button>
-          <Link to={routes.products} className={style.linkPage}>
-            Products
-          </Link>
-        </ListItem>
-        <ListItem button>
-          <Link to={routes.login} className={style.linkPage}>
-            Login
-          </Link>
-        </ListItem>
-      </List>
+      <CustomDrawer />
     </Box>
   );
 
@@ -96,22 +78,13 @@ const Navbar: FC = () => {
               <img src={logoImage} className={style.logoImage} />
             </Typography>
             <Button color="inherit">
-              <Link to={routes.login} className={style.loginBtn}>
+              <Link to="/login" className={style.loginBtn}>
                 Login
               </Link>
             </Button>
           </Toolbar>
         </AppBar>
       </Box>
-
-      <Switch>
-        <Route exact path={routes.products} component={Products}>
-          <Products />
-        </Route>
-        <Route path={routes.login} component={Login}>
-          <Login />
-        </Route>
-      </Switch>
     </div>
   );
 };
