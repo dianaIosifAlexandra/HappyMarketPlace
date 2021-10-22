@@ -1,0 +1,22 @@
+.productContainer {
+  margin: 0.5rem;
+}
+
+.paper {
+  width: 18rem;
+  height: 28rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productImage {
+  width: 5rem;
+  height: 6rem;
+}
+
+.ratingContainer {
+  font-weight: 600;
+}

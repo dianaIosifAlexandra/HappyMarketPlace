@@ -6,7 +6,7 @@ import { useAppSelector } from '../../hooks/appSelector';
 import { selectProduct } from '../../store/selectors/ProductSelector';
 import { getProductListThunk } from '../../store/thunks/ProductThunk';
 
-// import style from './ProductList.module.scss';
+import style from './ProductList.module.scss';
 
 const ProductList: FC = () => {
   const product = useAppSelector(selectProduct);
@@ -17,7 +17,7 @@ const ProductList: FC = () => {
   }, [dispatch]);
 
   return (
-    <List>
+    <List className={style.productList}>
       {product.productList.map((prod) => (
         <Product productItem={prod} key={prod.id} />
       ))}

@@ -37,7 +37,7 @@ const Navbar: FC = () => {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: 150 }}
+      sx={{ width: 180 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -75,7 +75,11 @@ const Navbar: FC = () => {
               sx={{ flexGrow: 1 }}
               className={style.logoContainer}
             >
-              <img src={logoImage} className={style.logoImage} />
+              <Button color="inherit">
+                <Link to="/" className={style.loginBtn}>
+                  <img src={logoImage} className={style.logoImage} />
+                </Link>
+              </Button>
             </Typography>
             <Button color="inherit">
               <Link to="/login" className={style.loginBtn}>

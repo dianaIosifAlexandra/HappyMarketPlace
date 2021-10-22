@@ -4,7 +4,7 @@ export default interface ProductModel {
   price: number;
   description: string;
   category: string;
-  imageUrl: string;
+  image: string;
   rating: {
     rate: number;
     count: number;

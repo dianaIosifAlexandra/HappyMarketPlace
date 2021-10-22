@@ -1,0 +1,24 @@
+@import '../../style/variables.scss';
+
+.loginContainer {
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  background-color: $color-latte;
+}
+
+.title {
+  font-weight: $bold;
+  font-size: $font-size-medium;
+}
+
+.formContainer {
+  margin: 1rem;
+}
+
+.loginBtn.loginBtn {
+  margin-top: 3rem;
+}
