@@ -10,17 +10,17 @@ import ShowMoreText from 'react-show-more-text';
 import style from './Product.module.scss';
 
 interface Props {
-  productItem: ProductModel;
+  product: ProductModel;
 }
 
-const Product: FC<Props> = ({ productItem }) => {
+const Product: FC<Props> = ({ product }) => {
   return (
     <div className={style.productContainer}>
       <Paper className={style.paper} elevation={3}>
         <div className={style.imgContainer}>
-          <img className={style.productImage} src={productItem.image} />
+          <img className={style.productImage} src={product.image} />
         </div>
-        <div>{productItem.title}</div>
+        <div>{product.title}</div>
         <div>
           <ShowMoreText
             lines={2}
@@ -32,12 +32,12 @@ const Product: FC<Props> = ({ productItem }) => {
             width={280}
             truncatedEndingComponent={'... '}
           >
-            {productItem.description}
+            {product.description}
           </ShowMoreText>
         </div>
-        <div className={style.ratingContainer}>{productItem.price}$</div>
+        <div className={style.ratingContainer}>{product.price}$</div>
         <div>
-          <RatingView ratingValue={Math.round(productItem.rating.rate)} />
+          <RatingView ratingValue={Math.round(product.rating.rate)} />
         </div>
         <div>
           <Button variant="contained" startIcon={<AddShoppingCartIcon />}>

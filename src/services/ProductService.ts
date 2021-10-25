@@ -1,8 +1,7 @@
-import http from '../api/apiServices';
-import ProductModel from '../models/Product';
+import { httpService } from '../api/apiServices';
 
 const getProducts = () => {
-  return http.get<ProductModel[]>('/products');
+  return httpService.getProducts();
 };
 
 const ProductService = {

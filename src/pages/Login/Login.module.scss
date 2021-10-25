@@ -1,7 +1,7 @@
 @import '../../style/variables.scss';
 
 .loginContainer {
-  height: 40rem;
+  height: 35rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22,3 +22,13 @@
 .loginBtn.loginBtn {
   margin-top: 3rem;
 }
+
+.passwordField {
+  margin-bottom: 2rem;
+}
+
+.normalUserContainer {
+  margin-bottom: 1rem;
+  background-color: $color-latte;
+}
+

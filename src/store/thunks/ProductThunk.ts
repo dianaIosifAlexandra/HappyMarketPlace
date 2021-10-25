@@ -14,7 +14,7 @@ export const getProductListThunk =
 
     ProductService.getProducts()
       .then((response) => {
-        dispatch(getProductListSuccess({ newProductList: response.data }));
+        dispatch(getProductListSuccess({ productList: response.data }));
       })
       .catch((error) => {
         dispatch(getProductListFailure({ error }));

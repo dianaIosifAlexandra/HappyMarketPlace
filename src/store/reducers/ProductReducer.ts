@@ -23,7 +23,7 @@ const ProductReducer = (state = initialState, action: ProductListActions) => {
       return {
         ...state,
         isLoading: false,
-        productList: action.payload.newProductList,
+        productList: action.payload.productList,
       };
     }
 

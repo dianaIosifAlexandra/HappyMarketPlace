@@ -1,5 +1,6 @@
-import { AppState, ProductListState } from '../types/types';
+import ProductModel from '../../models/Product';
+import { AppState } from '../types/types';
 
-export const selectProduct = (state: AppState): ProductListState => {
-  return state.product;
+export const selectProducts = (state: AppState): ProductModel[] => {
+  return state.product.productList;
 };

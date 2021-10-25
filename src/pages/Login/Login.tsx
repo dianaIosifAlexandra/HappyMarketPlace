@@ -5,16 +5,11 @@ import style from './Login.module.scss';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
-
-interface LoginFormState {
-  username: string;
-  password: string;
-  showPassword: boolean;
-}
+import Paper from '@mui/material/Paper';
 
 const Login: FC = () => {
-  let [username, setUsername] = useState('');
-  let [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleChangeUsername = useCallback((event) => {
     setUsername(event.target.value);
@@ -55,6 +50,18 @@ const Login: FC = () => {
             fullWidth
             type="password"
           />
+
+          <div>
+            <Paper elevation={3} className={style.normalUserContainer}>
+              <div>Username: johnd</div>
+              <div>Password: m38rmF$</div>
+            </Paper>
+            <Paper elevation={3} className={style.normalUserContainer}>
+              <strong>ADMIN</strong>
+              <div>Username: mor_2314</div>
+              <div>Password: 83r5^_</div>
+            </Paper>
+          </div>
           <Button
             variant="contained"
             className={style.loginBtn}

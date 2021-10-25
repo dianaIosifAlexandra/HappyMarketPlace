@@ -20,7 +20,7 @@ interface GetProductListFailure {
 interface GetProductListSuccess {
   type: typeof ProductActionTypes.GetProductListSuccess;
   payload: {
-    newProductList: ProductModel[];
+    productList: ProductModel[];
   };
 }
 
@@ -40,13 +40,13 @@ export const getProductListFailure = ({
 });
 
 export const getProductListSuccess = ({
-  newProductList,
+  productList,
 }: {
-  newProductList: ProductModel[];
+  productList: ProductModel[];
 }): GetProductListSuccess => ({
   type: ProductActionTypes.GetProductListSuccess,
   payload: {
-    newProductList,
+    productList: productList,
   },
 });
 
