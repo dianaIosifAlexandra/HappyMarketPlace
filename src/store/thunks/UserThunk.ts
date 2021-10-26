@@ -9,6 +9,8 @@ export const loginUserThunk =
   (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
     login(username, password).then((response) => {
       if ('token' in response) {
+        localStorage.setItem('token', response.token);
+        // localStorage.setItem('isAdmin', !!response.token);
         dispatch(loginUserSucces(response.token, username));
       }
       if ('msg' in response) {

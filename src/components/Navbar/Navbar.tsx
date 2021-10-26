@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
-import PersonIcon from '@mui/icons-material/Person';
 
 import CustomDrawer from '../Drawer/Drawer';
 
@@ -19,6 +18,7 @@ import {
   selectIsLoggedIn,
   selectUsername,
 } from '../../store/selectors/UserSelector';
+import Profile from '../Profile/Profile';
 
 type Anchor = 'left';
 
@@ -90,18 +90,7 @@ const Navbar: FC = () => {
                 </Link>
               </Button>
             </Typography>
-            {isLoggedIn ? (
-              <div className={style.loggedInUserContainer}>
-                <PersonIcon />
-                {username}
-              </div>
-            ) : (
-              <Button color="inherit">
-                <Link to="/login" className={style.loginBtn}>
-                  Login
-                </Link>
-              </Button>
-            )}
+            <Profile username={username} />
           </Toolbar>
         </AppBar>
       </Box>

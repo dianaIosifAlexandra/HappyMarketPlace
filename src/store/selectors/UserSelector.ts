@@ -7,3 +7,7 @@ export const selectIsLoggedIn = (state: AppState): boolean => {
 export const selectUsername = (state: AppState): string => {
   return state.user.username;
 };
+
+export const selectisAdmin = (state: AppState): boolean => {
+  return state.user.isAdmin;
+};

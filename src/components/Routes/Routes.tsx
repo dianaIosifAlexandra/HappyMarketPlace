@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Admin from '../../containers/Admin/Admin';
 import { Routes } from '../../helpers/Routes';
 import Login from '../../pages/Login/Login';
 import Products from '../../pages/Products/Products';
@@ -12,6 +13,9 @@ const ReactRouter: FC = () => {
       </Route>
       <Route exact path={Routes.login}>
         <Login />
+      </Route>
+      <Route exact path={Routes.admin}>
+        <Admin />
       </Route>
     </Switch>
   );

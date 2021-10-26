@@ -4,7 +4,7 @@ import { UserState } from './../types/types';
 const initialState: UserState = {
   username: '',
   password: '',
-  token: '',
+  token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
   errorMsg: '',
   isAdmin: false,
 };
@@ -12,12 +12,21 @@ const initialState: UserState = {
 const UserReducer = (state = initialState, action: LoginUserActions) => {
   switch (action.type) {
     case LoginActionTypes.LoginUserSucces: {
-      //aici sa returnez si username-ul
+      const { token, username } = action.payload;
+
+      const isUserAdmin = (adminUsername: string) => {
+        if (adminUsername === 'mor_2314') {
+          return true;
+        }
+
+        return false;
+      };
+
       return {
         ...state,
-        token: action.payload.token,
-        username: action.payload.username,
-        isAdmin: true,
+        token: token,
+        username: username,
+        isAdmin: isUserAdmin(username),
       };
     }
 

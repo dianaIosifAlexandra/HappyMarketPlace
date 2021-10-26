@@ -5,8 +5,12 @@ import ListItem from '@mui/material/ListItem';
 import style from './Drawer.module.scss';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../helpers/Routes';
+import { useAppSelector } from '../../hooks/appSelector';
+import { selectisAdmin } from '../../store/selectors/UserSelector';
 
 const CustomDrawer: FC = () => {
+  const isAdmin = useAppSelector(selectisAdmin);
+
   return (
     <div>
       <List>
@@ -20,6 +24,17 @@ const CustomDrawer: FC = () => {
             Login
           </Link>
         </ListItem>
+        {isAdmin ? (
+          <div>
+            <ListItem button>
+              <Link to={Routes.admin} className={style.linkPage}>
+                Admin
+              </Link>
+            </ListItem>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </List>
     </div>
   );
