@@ -16,6 +16,7 @@ const UserReducer = (state = initialState, action: LoginUserActions) => {
       return {
         ...state,
         token: action.payload.token,
+        username: action.payload.username,
         isAdmin: true,
       };
     }

@@ -11,6 +11,7 @@ import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
 import { useDispatch } from 'react-redux';
 import { loginUserThunk } from '../../store/thunks/UserThunk';
 import { Redirect } from 'react-router';
+import { Routes } from '../../helpers/Routes';
 
 const Login: FC = () => {
   const [username, setUsername] = useState('');
@@ -37,7 +38,7 @@ const Login: FC = () => {
   );
 
   if (isLoggedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to={Routes.products} />;
   }
 
   return (

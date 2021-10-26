@@ -18,3 +18,8 @@
 .menuBtn.menuBtn {
   color: $color-base-white;
 }
+
+.loggedInUserContainer {
+  display: flex;
+  align-items: center;
+}

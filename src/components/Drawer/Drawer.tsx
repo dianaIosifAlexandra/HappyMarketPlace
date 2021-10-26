@@ -4,23 +4,19 @@ import ListItem from '@mui/material/ListItem';
 
 import style from './Drawer.module.scss';
 import { Link } from 'react-router-dom';
-
-const routes = {
-  products: '/',
-  login: '/login',
-};
+import { Routes } from '../../helpers/Routes';
 
 const CustomDrawer: FC = () => {
   return (
     <div>
       <List>
         <ListItem button>
-          <Link to={routes.products} className={style.linkPage}>
+          <Link to={Routes.products} className={style.linkPage}>
             Products
           </Link>
         </ListItem>
         <ListItem button>
-          <Link to={routes.login} className={style.linkPage}>
+          <Link to={Routes.login} className={style.linkPage}>
             Login
           </Link>
         </ListItem>

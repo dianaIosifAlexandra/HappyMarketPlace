@@ -8,11 +8,17 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
 
 import CustomDrawer from '../Drawer/Drawer';
 
 import logoImage from '../../assests/happy-emoji-by-google.png';
 import style from './Navbar.module.scss';
+import { useAppSelector } from '../../hooks/appSelector';
+import {
+  selectIsLoggedIn,
+  selectUsername,
+} from '../../store/selectors/UserSelector';
 
 type Anchor = 'left';
 
@@ -20,6 +26,9 @@ const Navbar: FC = () => {
   const [position, setPosition] = useState({
     left: false,
   });
+
+  const username = useAppSelector(selectUsername);
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -81,11 +90,18 @@ const Navbar: FC = () => {
                 </Link>
               </Button>
             </Typography>
-            <Button color="inherit">
-              <Link to="/login" className={style.loginBtn}>
-                Login
-              </Link>
-            </Button>
+            {isLoggedIn ? (
+              <div className={style.loggedInUserContainer}>
+                <PersonIcon />
+                {username}
+              </div>
+            ) : (
+              <Button color="inherit">
+                <Link to="/login" className={style.loginBtn}>
+                  Login
+                </Link>
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </Box>

@@ -8,6 +8,7 @@ interface LoginUserSucces {
   type: typeof LoginActionTypes.LoginUserSucces;
   payload: {
     token: string;
+    username: string;
   };
 }
 
@@ -25,10 +26,14 @@ interface LoginUserServerFailure {
   };
 }
 
-export const loginUserSucces = (token: string): LoginUserSucces => ({
+export const loginUserSucces = (
+  token: string,
+  username: string
+): LoginUserSucces => ({
   type: LoginActionTypes.LoginUserSucces,
   payload: {
     token: token,
+    username: username,
   },
 });
 

@@ -1,4 +1,3 @@
-import LoginResponseModel from '../models/LooginResponse';
 import { httpPost } from './httpService';
 
 interface LoginSuccessResponse {
