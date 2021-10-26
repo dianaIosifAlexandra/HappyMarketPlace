@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { Dispatch, FC, useCallback, useState } from 'react';
 
 import Layout from '../../components/Layout/Layout';
 import style from './Login.module.scss';
@@ -6,22 +6,39 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import Paper from '@mui/material/Paper';
+import { useAppSelector } from '../../hooks/appSelector';
+import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
+import { useDispatch } from 'react-redux';
+import { loginUserThunk } from '../../store/thunks/UserThunk';
+import { Redirect } from 'react-router';
 
 const Login: FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const dispatch: Dispatch<any> = useDispatch();
 
   const handleChangeUsername = useCallback((event) => {
+    event.preventDefault();
     setUsername(event.target.value);
   }, []);
 
   const handleChangePassword = useCallback((event) => {
+    event.preventDefault();
     setPassword(event.target.value);
   }, []);
 
-  const login = useCallback(() => {
-    console.log('login');
-  }, []);
+  const login = useCallback(
+    (event) => {
+      event.preventDefault();
+      dispatch(loginUserThunk(username, password));
+    },
+    [username, password]
+  );
+
+  if (isLoggedIn) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Layout>
@@ -37,7 +54,7 @@ const Login: FC = () => {
             value={username}
             onChange={handleChangeUsername}
             fullWidth
-            type="email"
+            type="text"
           />
           <TextField
             id="pass"
@@ -51,7 +68,7 @@ const Login: FC = () => {
             type="password"
           />
 
-          <div>
+          <div className={style.mocksContainer}>
             <Paper elevation={3} className={style.normalUserContainer}>
               <div>Username: johnd</div>
               <div>Password: m38rmF$</div>

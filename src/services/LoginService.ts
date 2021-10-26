@@ -1,11 +1,26 @@
-import { httpService } from '../api/apiServices';
+import LoginResponseModel from '../models/LooginResponse';
+import { httpPost } from './httpService';
 
-const login = (username: string, password: string) => {
-  return httpService.login(username, password);
+interface LoginSuccessResponse {
+  token: string;
+}
+
+interface LoginErrorResponse {
+  msg: string;
+  status: string;
+}
+
+interface LoginCredentials {
+  username: string;
+  password: string;
+}
+
+export const login = (username: string, password: string) => {
+  return httpPost<LoginSuccessResponse | LoginErrorResponse, LoginCredentials>(
+    '/auth/login',
+    {
+      username,
+      password,
+    }
+  );
 };
-
-const Login = {
-  login,
-};
-
-export default Login;
