@@ -14,10 +14,7 @@ import CustomDrawer from '../Drawer/Drawer';
 import logoImage from '../../assests/happy-emoji-by-google.png';
 import style from './Navbar.module.scss';
 import { useAppSelector } from '../../hooks/appSelector';
-import {
-  selectIsLoggedIn,
-  selectUsername,
-} from '../../store/selectors/UserSelector';
+import { selectUsername } from '../../store/selectors/UserSelector';
 import Profile from '../Profile/Profile';
 
 type Anchor = 'left';
@@ -28,7 +25,6 @@ const Navbar: FC = () => {
   });
 
   const username = useAppSelector(selectUsername);
-  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>

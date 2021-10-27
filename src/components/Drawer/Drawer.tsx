@@ -6,10 +6,14 @@ import style from './Drawer.module.scss';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../helpers/Routes';
 import { useAppSelector } from '../../hooks/appSelector';
-import { selectisAdmin } from '../../store/selectors/UserSelector';
+import {
+  selectisAdmin,
+  selectIsLoggedIn,
+} from '../../store/selectors/UserSelector';
 
 const CustomDrawer: FC = () => {
   const isAdmin = useAppSelector(selectisAdmin);
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   return (
     <div>
@@ -24,6 +28,16 @@ const CustomDrawer: FC = () => {
             Login
           </Link>
         </ListItem>
+        {isLoggedIn ? (
+          <ListItem button>
+            <Link to={Routes.cart} className={style.linkPage}>
+              Cart
+            </Link>
+          </ListItem>
+        ) : (
+          <div></div>
+        )}
+
         {isAdmin ? (
           <div>
             <ListItem button>
