@@ -10,7 +10,10 @@ export const loginUserThunk =
     login(username, password).then((response) => {
       if ('token' in response) {
         localStorage.setItem('token', response.token);
-        // localStorage.setItem('isAdmin', !!response.token);
+        localStorage.setItem(
+          'isAdmin',
+          JSON.stringify(username === 'mor_2314')
+        );
         dispatch(loginUserSucces(response.token, username));
       }
       if ('msg' in response) {

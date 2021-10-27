@@ -1,0 +1,14 @@
+@import '../../style/variables.scss';
+
+.adminPage{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 3rem;
+  min-height: 100vh;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: $font-size-medium;
+  font-weight: 600;
+}

@@ -6,7 +6,9 @@ const initialState: UserState = {
   password: '',
   token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
   errorMsg: '',
-  isAdmin: false,
+  isAdmin: localStorage.getItem('isAdmin')
+    ? !!localStorage.getItem('isAdmin')
+    : false,
 };
 
 const UserReducer = (state = initialState, action: LoginUserActions) => {

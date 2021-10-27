@@ -8,9 +8,10 @@ const Admin: FC = () => {
   return (
     <Layout>
       <div className={style.adminPage}>
-        This is the admin page!
-        <br />
-        <CustomSlider />
+        <div className={style.title}>Please select the number of products!</div>
+        <div>
+          <CustomSlider />
+        </div>
       </div>
     </Layout>
   );

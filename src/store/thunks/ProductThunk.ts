@@ -12,7 +12,11 @@ export const getProductListThunk =
   (): AppThunk => (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
     dispatch(getProductListRequest());
 
-    ProductService.getProducts()
+    const productsNumber = localStorage.getItem('productsNumber')
+      ? localStorage.getItem('productsNumber')
+      : '10';
+
+    ProductService.getProducts(productsNumber!)
       .then((response) => {
         dispatch(getProductListSuccess({ productList: response.data }));
       })

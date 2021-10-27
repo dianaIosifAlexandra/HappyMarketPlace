@@ -1,8 +1,8 @@
 import { httpGet } from './httpService';
 import ProductModel from '../models/Product';
 
-const getProducts = () => {
-  return httpGet<ProductModel[]>('/products');
+const getProducts = (productsNumber: string) => {
+  return httpGet<ProductModel[]>('/products?limit=' + productsNumber);
 };
 
 const ProductService = {

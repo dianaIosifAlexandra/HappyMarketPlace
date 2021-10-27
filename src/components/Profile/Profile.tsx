@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { Dispatch, FC, useCallback, useState } from 'react';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
 import { Link, Redirect } from 'react-router-dom';
@@ -9,6 +9,8 @@ import Popover from '@mui/material/Popover';
 
 import style from './Profile.module.scss';
 import { Routes } from '../../helpers/Routes';
+import { loginUserSucces } from '../../store/actions/UserActions';
+import { useAppDispatch } from '../../hooks/actionDispatcher';
 
 interface Props {
   username: string;
@@ -16,6 +18,7 @@ interface Props {
 
 const Profile: FC<Props> = ({ username }) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const dispatch: Dispatch<any> = useAppDispatch();
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -35,9 +38,13 @@ const Profile: FC<Props> = ({ username }) => {
 
   const handleLogout = useCallback(() => {
     localStorage.setItem('token', '');
+    localStorage.setItem('isAdmin', '');
 
-    //cum faci aici update din nou la state ca sa mi se refesheze pagina?
-  }, []);
+    const token = '';
+    const name = '';
+
+    dispatch(loginUserSucces(token, name));
+  }, [isLoggedIn]);
 
   return (
     <div>
