@@ -23,19 +23,25 @@ const CustomDrawer: FC = () => {
             Products
           </Link>
         </ListItem>
-        <ListItem button>
-          <Link to={Routes.login} className={style.linkPage}>
-            Login
-          </Link>
-        </ListItem>
         {isLoggedIn ? (
+          <div>
+            <ListItem button>
+              <Link to={Routes.cart} className={style.linkPage}>
+                Cart
+              </Link>
+            </ListItem>
+            {/* <ListItem button>
+              <Link to={Routes.logout} className={style.linkPage}>
+                Logout
+              </Link>
+            </ListItem> */}
+          </div>
+        ) : (
           <ListItem button>
-            <Link to={Routes.cart} className={style.linkPage}>
-              Cart
+            <Link to={Routes.login} className={style.linkPage}>
+              Login
             </Link>
           </ListItem>
-        ) : (
-          <div></div>
         )}
 
         {isAdmin ? (

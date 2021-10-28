@@ -5,6 +5,7 @@ import { Routes } from '../../helpers/Routes';
 import Login from '../../pages/Login/Login';
 import Products from '../../pages/Products/Products';
 import Cart from '../../pages/Cart/Cart';
+import Logout from '../Logout/Logout';
 
 const ReactRouter: FC = () => {
   return (
@@ -20,6 +21,9 @@ const ReactRouter: FC = () => {
       </Route>
       <Route exact path={Routes.cart}>
         <Cart />
+      </Route>
+      <Route exact path={Routes.logout}>
+        <Logout />
       </Route>
     </Switch>
   );
