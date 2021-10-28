@@ -12,15 +12,17 @@ export const getProductListThunk =
   (): AppThunk => (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
     dispatch(getProductListRequest());
 
-    const productsNumber = localStorage.getItem('productsNumber')
+    let productsNumber = localStorage.getItem('productsNumber')
       ? localStorage.getItem('productsNumber')
       : '10';
 
-    ProductService.getProducts(productsNumber!)
-      .then((response) => {
-        dispatch(getProductListSuccess({ productList: response.data }));
-      })
-      .catch((error) => {
-        dispatch(getProductListFailure({ error }));
-      });
+    if (productsNumber) {
+      ProductService.getProducts(productsNumber)
+        .then((response) => {
+          dispatch(getProductListSuccess({ productList: response.data }));
+        })
+        .catch((error) => {
+          dispatch(getProductListFailure({ error }));
+        });
+    }
   };

@@ -1,14 +1,13 @@
 import React, { Dispatch, FC, useCallback, useState } from 'react';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import PersonIcon from '@mui/icons-material/Person';
 import Popover from '@mui/material/Popover';
 
 import style from './Profile.module.scss';
-import { Routes } from '../../helpers/Routes';
 import { loginUserSucces } from '../../store/actions/UserActions';
 import { useAppDispatch } from '../../hooks/actionDispatcher';
 

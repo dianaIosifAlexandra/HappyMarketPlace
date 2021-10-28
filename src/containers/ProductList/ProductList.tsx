@@ -10,7 +10,6 @@ import style from './ProductList.module.scss';
 
 const ProductList: FC = () => {
   const products = useAppSelector(selectProducts);
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {

@@ -15,7 +15,7 @@ import logoImage from '../../assests/happy-emoji-by-google.png';
 import style from './Navbar.module.scss';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectUsername } from '../../store/selectors/UserSelector';
-import Profile from '../Profile/Profile';
+import Profile from '../../containers/Profile/Profile';
 
 type Anchor = 'left';
 

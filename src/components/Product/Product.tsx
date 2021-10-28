@@ -8,12 +8,16 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShowMoreText from 'react-show-more-text';
 
 import style from './Product.module.scss';
+import { useAppSelector } from '../../hooks/appSelector';
+import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
 
 interface Props {
   product: ProductModel;
 }
 
 const Product: FC<Props> = ({ product }) => {
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+
   return (
     <div className={style.productContainer}>
       <Paper className={style.paper} elevation={3}>
@@ -40,9 +44,13 @@ const Product: FC<Props> = ({ product }) => {
           <RatingView ratingValue={Math.round(product.rating.rate)} />
         </div>
         <div>
-          <Button variant="contained" startIcon={<AddShoppingCartIcon />}>
-            Add to cart
-          </Button>
+          {isLoggedIn ? (
+            <Button variant="contained" startIcon={<AddShoppingCartIcon />}>
+              Add to cart
+            </Button>
+          ) : (
+            <div></div>
+          )}
         </div>
       </Paper>
     </div>
