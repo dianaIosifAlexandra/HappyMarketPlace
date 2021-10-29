@@ -1,9 +1,11 @@
-import { LoginUserActions } from './../actions/UserActions';
+import { UserActions } from './../actions/UserActions';
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import ProductModel from '../../models/Product';
 import { ProductListActions } from '../actions/ProductListAction';
 import { RootState } from '../store';
+import CartProduct from '../../models/CartProduct';
+import { CartActions } from '../actions/CartActions';
 
 export interface ProductListState {
   productList: ProductModel[];
@@ -19,9 +21,15 @@ export interface UserState {
   isAdmin: boolean;
 }
 
+export interface CartState {
+  addedProducts: CartProduct[];
+  total: number;
+}
+
 export interface AppState {
   product: ProductListState;
   user: UserState;
+  cart: CartState;
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -31,4 +39,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   AnyAction
 >;
 
-export type AppActions = ProductListActions | LoginUserActions;
+export type AppActions = ProductListActions | UserActions | CartActions;

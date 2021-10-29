@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { Dispatch, FC, useCallback } from 'react';
 
 import ProductModel from '../../models/Product';
 import { RatingView } from 'react-simple-star-rating';
@@ -10,13 +10,31 @@ import ShowMoreText from 'react-show-more-text';
 import style from './Product.module.scss';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
+import { addToCart } from '../../store/actions/CartActions';
+import { useAppDispatch } from '../../hooks/actionDispatcher';
+import CartProduct from '../../models/CartProduct';
 
 interface Props {
   product: ProductModel;
 }
 
+const convertToCartProduct = (product: ProductModel): CartProduct => {
+  return {
+    id: product.id,
+    title: product.title,
+    image: product.image,
+    price: product.price,
+    quantity: 1,
+  };
+};
+
 const Product: FC<Props> = ({ product }) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const dispatch: Dispatch<any> = useAppDispatch();
+
+  const handleAddToCart = useCallback(() => {
+    dispatch(addToCart(convertToCartProduct(product)));
+  }, []);
 
   return (
     <div className={style.productContainer}>
@@ -45,7 +63,11 @@ const Product: FC<Props> = ({ product }) => {
         </div>
         <div>
           {isLoggedIn ? (
-            <Button variant="contained" startIcon={<AddShoppingCartIcon />}>
+            <Button
+              variant="contained"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={handleAddToCart}
+            >
               Add to cart
             </Button>
           ) : (

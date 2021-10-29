@@ -1,61 +1,65 @@
-export enum LoginActionTypes {
+export enum UserActionTypes {
   LoginUserSucces = 'USER--LOGIN-USER-SUCCESS',
   LoginUserFailure = 'USER--LOGIN-USER-FAILURE',
-  LoginUserServerFailure = 'USER--LOGIN-USER-SERVER-FAILURE',
+  LogoutUser = 'USER--LOGOUT-USER',
 }
 
 interface LoginUserSucces {
-  type: typeof LoginActionTypes.LoginUserSucces;
+  type: typeof UserActionTypes.LoginUserSucces;
   payload: {
     token: string;
     username: string;
+    isAdmin: boolean;
   };
 }
 
 interface LoginUserFailure {
-  type: typeof LoginActionTypes.LoginUserFailure;
+  type: typeof UserActionTypes.LoginUserFailure;
   payload: {
     msg: string;
   };
 }
 
-interface LoginUserServerFailure {
-  type: typeof LoginActionTypes.LoginUserServerFailure;
+interface LogoutUser {
+  type: typeof UserActionTypes.LogoutUser;
   payload: {
-    serverError: string;
+    token: string;
+    username: string;
+    isAdmin: boolean;
   };
 }
 
 export const loginUserSucces = (
   token: string,
-  username: string
+  username: string,
+  isAdmin: boolean
 ): LoginUserSucces => ({
-  type: LoginActionTypes.LoginUserSucces,
+  type: UserActionTypes.LoginUserSucces,
   payload: {
     token: token,
     username: username,
+    isAdmin: isAdmin,
   },
 });
 
 export const loginUserFailure = (msg: string): LoginUserFailure => ({
-  type: LoginActionTypes.LoginUserFailure,
+  type: UserActionTypes.LoginUserFailure,
   payload: {
     msg: msg,
   },
 });
 
-export const loginUserServerFailure = ({
-  serverError,
-}: {
-  serverError: string;
-}): LoginUserServerFailure => ({
-  type: LoginActionTypes.LoginUserServerFailure,
+export const logoutUser = (
+  token: string,
+  username: string,
+  isAdmin: boolean
+): LogoutUser => ({
+  type: UserActionTypes.LogoutUser,
   payload: {
-    serverError: serverError,
+    token: token,
+    username: username,
+    isAdmin: isAdmin,
   },
 });
 
-export type LoginUserActions =
-  | LoginUserSucces
-  | LoginUserFailure
-  | LoginUserServerFailure;
+export type UserActions = LoginUserSucces | LoginUserFailure | LogoutUser;

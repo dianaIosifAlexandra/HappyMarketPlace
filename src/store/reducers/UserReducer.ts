@@ -1,4 +1,4 @@
-import { LoginActionTypes, LoginUserActions } from './../actions/UserActions';
+import { UserActionTypes, UserActions } from './../actions/UserActions';
 import { UserState } from './../types/types';
 
 const initialState: UserState = {
@@ -11,28 +11,21 @@ const initialState: UserState = {
     : false,
 };
 
-const UserReducer = (state = initialState, action: LoginUserActions) => {
+//todo: rename userActions
+const UserReducer = (state = initialState, action: UserActions) => {
   switch (action.type) {
-    case LoginActionTypes.LoginUserSucces: {
-      const { token, username } = action.payload;
-
-      const isUserAdmin = (adminUsername: string) => {
-        if (adminUsername === 'mor_2314') {
-          return true;
-        }
-
-        return false;
-      };
+    case UserActionTypes.LoginUserSucces: {
+      const { token, username, isAdmin } = action.payload;
 
       return {
         ...state,
         token: token,
         username: username,
-        isAdmin: isUserAdmin(username),
+        isAdmin: isAdmin,
       };
     }
 
-    case LoginActionTypes.LoginUserFailure: {
+    case UserActionTypes.LoginUserFailure: {
       return {
         ...state,
         loginError: action.payload.msg,
@@ -40,11 +33,14 @@ const UserReducer = (state = initialState, action: LoginUserActions) => {
       };
     }
 
-    case LoginActionTypes.LoginUserServerFailure: {
+    case UserActionTypes.LogoutUser: {
+      const { token, username, isAdmin } = action.payload;
+
       return {
         ...state,
-        serverError: action.payload.serverError,
-        isAdmin: false,
+        token: token,
+        username: username,
+        isAdmin: isAdmin,
       };
     }
 
