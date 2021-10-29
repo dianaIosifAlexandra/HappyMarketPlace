@@ -1,13 +1,17 @@
+.cartItemGrid{
+ margin-bottom: 1rem;
+}
+
 .gridItem {
   padding: 0;
 }
 
 .description {
   text-align: left;
-  height: 20rem;
+  height: 14rem;
 }
 
-.title {
+.title.title {
   margin-bottom: 1rem;
 }
 
@@ -17,5 +21,22 @@
 }
 
 .total {
-  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+
+.image {
+  width: 6rem;
+  height: 6rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.cartItemBtn.cartItemBtn {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }

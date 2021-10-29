@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, useCallback, useEffect } from 'react';
+import React, { Dispatch, FC, useCallback } from 'react';
 import { useAppDispatch } from '../../hooks/actionDispatcher';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectIsLoggedIn } from '../../store/selectors/UserSelector';

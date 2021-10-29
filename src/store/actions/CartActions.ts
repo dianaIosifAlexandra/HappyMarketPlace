@@ -1,8 +1,8 @@
 import CartProduct from '../../models/CartProduct';
 
 export enum CartActionTypes {
-  AddToCart = 'CART--ADD-TO-CART-SUCCES',
-  GetTotal = 'CART--GET-TOTAL',
+  AddToCart = 'CART--ADD-TO-CART',
+  ChangeQuantity = 'CART--CHANGE-QUANTITY',
 }
 
 interface AddToCart {
@@ -12,10 +12,11 @@ interface AddToCart {
   };
 }
 
-interface GetTotal {
-  type: typeof CartActionTypes.GetTotal;
+interface ChangeQuantity {
+  type: typeof CartActionTypes.ChangeQuantity;
   payload: {
-    total: number;
+    id: string;
+    quantity: number;
   };
 }
 
@@ -26,4 +27,15 @@ export const addToCart = (product: CartProduct): AddToCart => ({
   },
 });
 
-export type CartActions = AddToCart | GetTotal;
+export const changeQuantity = (
+  id: string,
+  quantity: number
+): ChangeQuantity => ({
+  type: CartActionTypes.ChangeQuantity,
+  payload: {
+    id,
+    quantity,
+  },
+});
+
+export type CartActions = AddToCart | ChangeQuantity;
