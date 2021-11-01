@@ -9,16 +9,11 @@ import { Routes } from '../../helpers/Routes';
 import { logoutThunk } from '../../store/thunks/UserThunk';
 
 const Logout: FC = () => {
-  const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const dispatch: Dispatch<any> = useAppDispatch();
 
   const handleLogout = useCallback(() => {
-    dispatch(logoutThunk('', '', false));
+    dispatch(logoutThunk());
   }, []);
-
-  if (!isLoggedIn) {
-    return <Redirect to={Routes.login} />;
-  }
 
   return (
     <div>

@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 
 import style from './Profile.module.scss';
 import Logout from '../../components/Logout/Logout';
+import { Routes } from '../../helpers/Routes';
 
 const Profile: FC = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
@@ -31,7 +32,7 @@ const Profile: FC = () => {
         </div>
       ) : (
         <Button color="inherit">
-          <Link to="/login" className={style.loginBtn}>
+          <Link to={Routes.login} className={style.loginBtn}>
             Login
           </Link>
         </Button>

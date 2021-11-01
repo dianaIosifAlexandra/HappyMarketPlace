@@ -22,11 +22,6 @@ interface LoginUserFailure {
 
 interface LogoutUser {
   type: typeof UserActionTypes.LogoutUser;
-  payload: {
-    token: string;
-    username: string;
-    isAdmin: boolean;
-  };
 }
 
 export const loginUserSucces = (
@@ -49,17 +44,8 @@ export const loginUserFailure = (msg: string): LoginUserFailure => ({
   },
 });
 
-export const logoutUser = (
-  token: string,
-  username: string,
-  isAdmin: boolean
-): LogoutUser => ({
+export const logoutUser = (): LogoutUser => ({
   type: UserActionTypes.LogoutUser,
-  payload: {
-    token: token,
-    username: username,
-    isAdmin: isAdmin,
-  },
 });
 
 export type UserActions = LoginUserSucces | LoginUserFailure | LogoutUser;

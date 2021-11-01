@@ -1,13 +1,24 @@
 import React, { FC } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Admin from '../../pages/Admin/Admin';
 import { Routes } from '../../helpers/Routes';
 import Login from '../../pages/Login/Login';
 import Products from '../../pages/Products/Products';
 import Cart from '../../pages/Cart/Cart';
-import Logout from '../Logout/Logout';
+import { useAppSelector } from '../../hooks/appSelector';
+import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
 
 const ReactRouter: FC = () => {
+  const location = useLocation();
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
+
+  if (
+    (location.pathname === Routes.cart || location.pathname === Routes.admin) &&
+    !isLoggedIn
+  ) {
+    return <Redirect to={Routes.products} />;
+  }
+
   return (
     <Switch>
       <Route exact path={Routes.products}>
@@ -21,9 +32,6 @@ const ReactRouter: FC = () => {
       </Route>
       <Route exact path={Routes.cart}>
         <Cart />
-      </Route>
-      <Route exact path={Routes.logout}>
-        <Logout />
       </Route>
     </Switch>
   );

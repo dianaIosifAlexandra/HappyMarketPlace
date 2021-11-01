@@ -3,7 +3,6 @@ import { UserState } from './../types/types';
 
 const initialState: UserState = {
   username: '',
-  password: '',
   token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
   errorMsg: '',
   isAdmin: localStorage.getItem('isAdmin')
@@ -34,13 +33,11 @@ const UserReducer = (state = initialState, action: UserActions) => {
     }
 
     case UserActionTypes.LogoutUser: {
-      const { token, username, isAdmin } = action.payload;
-
       return {
         ...state,
-        token: token,
-        username: username,
-        isAdmin: isAdmin,
+        token: '',
+        username: '',
+        isAdmin: false,
       };
     }
 

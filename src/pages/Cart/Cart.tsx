@@ -17,7 +17,7 @@ import { Typography } from '@mui/material';
 
 const Cart: FC = () => {
   const addedProducts = useAppSelector(selectAddedProducts);
-  const total = useAppSelector(selectTotal);
+  const total = useAppSelector(selectTotal).toFixed(2);
 
   return (
     <Layout>
@@ -35,7 +35,9 @@ const Cart: FC = () => {
         )}
 
         <Paper elevation={3}>
-          <div className={style.total}>Total payment: {total}</div>
+          <Typography className={style.total}>
+            Total payment: {total} $
+          </Typography>
         </Paper>
       </Box>
     </Layout>

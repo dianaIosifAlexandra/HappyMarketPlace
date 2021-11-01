@@ -17,6 +17,9 @@
 
 .formContainer {
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
 }
 
 .loginBtn.loginBtn {

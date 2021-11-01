@@ -39,10 +39,9 @@ export const loginUserThunk =
   };
 
 export const logoutThunk =
-  (token: string, username: string, isAdmin: boolean): AppThunk =>
-  (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
-    updateLocalStorage(StorageKey.Token, token);
-    updateLocalStorage(StorageKey.IsAdmin, JSON.stringify(isAdmin));
+  (): AppThunk => (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
+    updateLocalStorage(StorageKey.Token, '');
+    updateLocalStorage(StorageKey.IsAdmin, JSON.stringify(false));
 
-    dispatch(logoutUser(token, username, isAdmin));
+    dispatch(logoutUser());
   };

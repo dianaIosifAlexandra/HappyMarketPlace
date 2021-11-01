@@ -7,14 +7,12 @@ const initialState: CartState = {
   total: 0,
 };
 
-//refactor: sa tranform for-ul de la calculateTotalPrice in array.reduce
 const calculateTotalPrice = (productsList: CartProduct[]) => {
-  let actualTotal = 0;
-  productsList.forEach((element) => {
-    actualTotal += element.quantity * element.price;
-  });
-
-  return actualTotal;
+  return productsList.reduce(
+    (total: number, product: CartProduct) =>
+      total + product.quantity * product.price,
+    0
+  );
 };
 
 const CartReducer = (state = initialState, action: CartActions) => {
