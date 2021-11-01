@@ -17,10 +17,6 @@ const calculateTotalPrice = (productsList: CartProduct[]) => {
   return actualTotal;
 };
 
-const CalcTotal = (previousTotal: number, price: number, quantity: number) => {
-  return previousTotal + price * quantity;
-};
-
 const CartReducer = (state = initialState, action: CartActions) => {
   switch (action.type) {
     case CartActionTypes.AddToCart: {
@@ -41,11 +37,6 @@ const CartReducer = (state = initialState, action: CartActions) => {
           ...state,
           addedProducts: newAddedProduscts,
           total: calculateTotalPrice(newAddedProduscts),
-          // total: CalcTotal(
-          //   state.total,
-          //   existingProduct.price,
-          //   existingProduct.quantity
-          // ),
         };
       } else {
         const newAddedProduscts = [
@@ -81,11 +72,6 @@ const CartReducer = (state = initialState, action: CartActions) => {
           ...state,
           addedProducts: [...state.addedProducts],
           total: calculateTotalPrice(newAddedProduscts),
-          // total: CalcTotal(
-          //   state.total,
-          //   existingProduct.price,
-          //   existingProduct.quantity
-          // ),
         };
       }
 
@@ -154,7 +140,6 @@ const CartReducer = (state = initialState, action: CartActions) => {
       );
 
       if (index != -1) {
-        const existingProduct = state.addedProducts[index];
         state.addedProducts.splice(index, 1);
         const newAddedProduscts = [...state.addedProducts];
 

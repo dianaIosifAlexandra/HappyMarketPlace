@@ -48,45 +48,38 @@ const Navbar: FC = () => {
   );
 
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            {(['left'] as const).map((anchor) => (
-              <React.Fragment key={anchor}>
-                <Button
-                  onClick={toggleDrawer(anchor, true)}
-                  className={style.menuBtn}
-                >
-                  <MenuIcon />
-                </Button>
-                <Drawer
-                  anchor={anchor}
-                  open={position[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                >
-                  {list(anchor)}
-                </Drawer>
-              </React.Fragment>
-            ))}
-
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1 }}
-              className={style.logoContainer}
-            >
-              <Button color="inherit">
-                <Link to="/" className={style.loginBtn}>
-                  <img src={logoImage} className={style.logoImage} />
-                </Link>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar className={style.navBarContainer}>
+          {(['left'] as const).map((anchor) => (
+            <React.Fragment key={anchor}>
+              <Button
+                onClick={toggleDrawer(anchor, true)}
+                className={style.menuBtn}
+              >
+                <MenuIcon />
               </Button>
-            </Typography>
-            <Profile />
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </div>
+              <Drawer
+                anchor={anchor}
+                open={position[anchor]}
+                onClose={toggleDrawer(anchor, false)}
+              >
+                {list(anchor)}
+              </Drawer>
+            </React.Fragment>
+          ))}
+
+          <div className={style.logoContainer}>
+            <Button color="inherit">
+              <Link to="/" className={style.loginBtn}>
+                <img src={logoImage} className={style.logoImage} />
+              </Link>
+            </Button>
+          </div>
+          <Profile />
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 

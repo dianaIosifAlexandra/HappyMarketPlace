@@ -1,8 +1,13 @@
 @import '../../style/variables.scss';
 
-.logoContainer {
+.navBarContainer.navBarContainer.navBarContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoContainer {
+  padding-top: 0.5rem;
 }
 
 .logoImage {
@@ -13,5 +18,3 @@
 .menuBtn.menuBtn {
   color: $color-base-white;
 }
-
-

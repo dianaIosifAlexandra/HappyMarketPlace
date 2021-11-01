@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, useCallback, useState } from 'react';
+import React, { Dispatch, FC, useCallback } from 'react';
 
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -36,7 +36,7 @@ const CartItem: FC<Props> = ({ product }) => {
 
   const handleIncreaseQuantity = useCallback(() => {
     dispatch(increaseeQuantity(product.id, product.quantity));
-  }, []);
+  }, [product.quantity]);
 
   const handleDecreaseQuantity = useCallback(() => {
     dispatch(decreaseQuantity(product.id, product.quantity));
@@ -75,18 +75,30 @@ const CartItem: FC<Props> = ({ product }) => {
           </Typography>
         </Paper>
         <div className={style.buttons}>
-          <Tooltip title="Delete item from cart" onClick={handleDeleteProduct}>
-            <Button variant="contained" className={style.cartItemBtn}>
+          <Tooltip title="Delete item from cart">
+            <Button
+              variant="contained"
+              className={style.cartItemBtn}
+              onClick={handleDeleteProduct}
+            >
               <DeleteForeverIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Add quanity" onClick={handleIncreaseQuantity}>
-            <Button variant="contained" className={style.cartItemBtn}>
+          <Tooltip title="Add quanity">
+            <Button
+              variant="contained"
+              className={style.cartItemBtn}
+              onClick={handleIncreaseQuantity}
+            >
               <AddIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Remove quanity" onClick={handleDecreaseQuantity}>
-            <Button variant="contained" className={style.cartItemBtn}>
+          <Tooltip title="Remove quanity">
+            <Button
+              variant="contained"
+              className={style.cartItemBtn}
+              onClick={handleDecreaseQuantity}
+            >
               <RemoveIcon />
             </Button>
           </Tooltip>

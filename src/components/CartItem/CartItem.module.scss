@@ -8,7 +8,6 @@
 
 .description {
   text-align: left;
-  height: 14rem;
 }
 
 .title.title {
@@ -16,8 +15,9 @@
 }
 
 .quantity.quantity.quantity {
-  width: 14rem;
+  width: 10rem;
   margin-bottom: 1rem;
+
 }
 
 .total {
@@ -34,9 +34,9 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .cartItemBtn.cartItemBtn {
   margin-right: 0.5rem;
-  margin-left: 0.5rem;
 }

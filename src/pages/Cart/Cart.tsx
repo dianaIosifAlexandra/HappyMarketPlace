@@ -13,6 +13,7 @@ import {
   selectAddedProducts,
   selectTotal,
 } from '../../store/selectors/CartSelector';
+import { Typography } from '@mui/material';
 
 const Cart: FC = () => {
   const addedProducts = useAppSelector(selectAddedProducts);
@@ -22,13 +23,19 @@ const Cart: FC = () => {
     <Layout>
       <Box className={style.cartPageContainer}>
         <h1>My cart</h1>
-        <Paper elevation={3} className={style.productContainer}>
-          {addedProducts.map((product) => (
-            <CartItem product={product} key={product.id} />
-          ))}
-        </Paper>
+
+        {addedProducts.length === 0 ? (
+          <Typography variant="h6">No more items in the cart</Typography>
+        ) : (
+          <Paper elevation={3} className={style.productContainer}>
+            {addedProducts.map((product) => (
+              <CartItem product={product} key={product.id} />
+            ))}
+          </Paper>
+        )}
+
         <Paper elevation={3}>
-          <div>Suma tuturor produselor: {total}</div>
+          <div className={style.total}>Total payment: {total}</div>
         </Paper>
       </Box>
     </Layout>
