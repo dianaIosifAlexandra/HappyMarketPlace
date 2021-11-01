@@ -13,7 +13,12 @@ import style from './CartItem.module.scss';
 import CartProduct from '../../models/CartProduct';
 import Button from '@mui/material/Button';
 import { useAppDispatch } from '../../hooks/actionDispatcher';
-import { changeQuantity } from '../../store/actions/CartActions';
+import {
+  changeQuantity,
+  decreaseQuantity,
+  deleteProduct,
+  increaseeQuantity,
+} from '../../store/actions/CartActions';
 
 interface Props {
   product: CartProduct;
@@ -22,8 +27,26 @@ interface Props {
 const CartItem: FC<Props> = ({ product }) => {
   const dispatch: Dispatch<any> = useAppDispatch();
 
-  const handleChange = useCallback((event) => {
-    dispatch(changeQuantity(product.id, event.target.value));
+  const handleChange = useCallback(
+    (event) => {
+      dispatch(changeQuantity(product.id, event.target.value));
+    },
+    [product.quantity]
+  );
+
+  const handleIncreaseQuantity = useCallback(() => {
+    dispatch(increaseeQuantity(product.id, product.quantity));
+  }, []);
+
+  const handleDecreaseQuantity = useCallback(() => {
+    dispatch(decreaseQuantity(product.id, product.quantity));
+    if (product.quantity === 0) {
+      dispatch(deleteProduct(product.id));
+    }
+  }, [product.quantity]);
+
+  const handleDeleteProduct = useCallback(() => {
+    dispatch(deleteProduct(product.id));
   }, []);
 
   return (
@@ -52,17 +75,17 @@ const CartItem: FC<Props> = ({ product }) => {
           </Typography>
         </Paper>
         <div className={style.buttons}>
-          <Tooltip title="Delete item from cart">
+          <Tooltip title="Delete item from cart" onClick={handleDeleteProduct}>
             <Button variant="contained" className={style.cartItemBtn}>
               <DeleteForeverIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Add quanity">
+          <Tooltip title="Add quanity" onClick={handleIncreaseQuantity}>
             <Button variant="contained" className={style.cartItemBtn}>
               <AddIcon />
             </Button>
           </Tooltip>
-          <Tooltip title="Remove quanity">
+          <Tooltip title="Remove quanity" onClick={handleDecreaseQuantity}>
             <Button variant="contained" className={style.cartItemBtn}>
               <RemoveIcon />
             </Button>

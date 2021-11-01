@@ -10,13 +10,15 @@ const initialState: CartState = {
 //refactor: sa tranform for-ul de la calculateTotalPrice in array.reduce
 const calculateTotalPrice = (productsList: CartProduct[]) => {
   let actualTotal = 0;
-
-  for (let index = 0; index < productsList.length; index++) {
-    const element = productsList[index];
+  productsList.forEach((element) => {
     actualTotal += element.quantity * element.price;
-  }
+  });
 
   return actualTotal;
+};
+
+const CalcTotal = (previousTotal: number, price: number, quantity: number) => {
+  return previousTotal + price * quantity;
 };
 
 const CartReducer = (state = initialState, action: CartActions) => {
@@ -39,6 +41,11 @@ const CartReducer = (state = initialState, action: CartActions) => {
           ...state,
           addedProducts: newAddedProduscts,
           total: calculateTotalPrice(newAddedProduscts),
+          // total: CalcTotal(
+          //   state.total,
+          //   existingProduct.price,
+          //   existingProduct.quantity
+          // ),
         };
       } else {
         const newAddedProduscts = [
@@ -68,17 +75,97 @@ const CartReducer = (state = initialState, action: CartActions) => {
           ...existingProduct,
         });
 
+        const newAddedProduscts = [...state.addedProducts];
+
         return {
           ...state,
           addedProducts: [...state.addedProducts],
+          total: calculateTotalPrice(newAddedProduscts),
+          // total: CalcTotal(
+          //   state.total,
+          //   existingProduct.price,
+          //   existingProduct.quantity
+          // ),
         };
       }
 
-      console.error('CartReducr - ChangeQuantity - Product not found');
+      console.error('CartReducer - ChangeQuantity - Product not found');
 
       return {
         ...state,
       };
+    }
+
+    case CartActionTypes.IncreaseQuantity: {
+      const index: number = state.addedProducts.findIndex(
+        (item: CartProduct) => item.id === action.payload.id
+      );
+
+      if (index != -1) {
+        const existingProduct = state.addedProducts[index];
+        existingProduct.quantity++;
+        state.addedProducts.splice(index, 1, {
+          ...existingProduct,
+        });
+
+        const newAddedProduscts = [...state.addedProducts];
+
+        return {
+          ...state,
+          addedProducts: newAddedProduscts,
+          total: calculateTotalPrice(newAddedProduscts),
+        };
+      }
+
+      console.error('CartReducer - IncreaseQuantity - Product not found');
+
+      return { ...state };
+    }
+
+    case CartActionTypes.DecreaseQuantity: {
+      const index: number = state.addedProducts.findIndex(
+        (item: CartProduct) => item.id === action.payload.id
+      );
+
+      if (index != -1) {
+        const existingProduct = state.addedProducts[index];
+        existingProduct.quantity--;
+        state.addedProducts.splice(index, 1, {
+          ...existingProduct,
+        });
+
+        const newAddedProduscts = [...state.addedProducts];
+
+        return {
+          ...state,
+          addedProducts: newAddedProduscts,
+          total: calculateTotalPrice(newAddedProduscts),
+        };
+      }
+
+      console.error('CartReducer - DecreaseQuantity - Product not found');
+
+      return { ...state };
+    }
+
+    case CartActionTypes.DeleteProduct: {
+      const index: number = state.addedProducts.findIndex(
+        (item: CartProduct) => item.id === action.payload.id
+      );
+
+      if (index != -1) {
+        const existingProduct = state.addedProducts[index];
+        state.addedProducts.splice(index, 1);
+        const newAddedProduscts = [...state.addedProducts];
+
+        return {
+          ...state,
+          addedProducts: newAddedProduscts,
+          total: calculateTotalPrice(newAddedProduscts),
+        };
+      }
+
+      return { ...state };
     }
 
     default:
