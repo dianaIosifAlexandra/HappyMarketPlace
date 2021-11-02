@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useAppSelector } from '../../hooks/appSelector';
 import {
   selectIsLoggedIn,
@@ -16,14 +16,13 @@ import { Routes } from '../../helpers/Routes';
 
 const Profile: FC = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
-
   const username = useAppSelector(selectUsername);
 
   return (
     <div>
       {isLoggedIn ? (
         <div className={style.loggedInUserContainer}>
-          <Tooltip title={username} placement="top">
+          <Tooltip title={username}>
             <PersonIcon />
           </Tooltip>
           <div className={style.logoutBtn}>

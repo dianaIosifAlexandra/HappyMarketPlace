@@ -18,3 +18,21 @@
 .menuBtn.menuBtn {
   color: $color-base-white;
 }
+
+.linkPage {
+  text-decoration: none;
+  color: $color-navy-blue;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  color: $color-base-white;
+}
+
+.userContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

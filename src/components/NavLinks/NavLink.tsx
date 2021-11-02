@@ -1,53 +1,51 @@
 import React, { FC } from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-
-import style from './Drawer.module.scss';
-import { Link } from 'react-router-dom';
-import { Routes } from '../../helpers/Routes';
 import { useAppSelector } from '../../hooks/appSelector';
 import {
   selectisAdmin,
   selectIsLoggedIn,
 } from '../../store/selectors/UserSelector';
+import { Link } from 'react-router-dom';
+import { Routes } from '../../helpers/Routes';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import { ConstructionOutlined } from '@mui/icons-material';
 
-const CustomDrawer: FC = () => {
+interface Props {
+  className: string;
+}
+
+const NavLinks: FC<Props> = ({ className }) => {
   const isAdmin = useAppSelector(selectisAdmin);
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   return (
     <div>
-      <List>
+      <List className={className}>
         <ListItem button>
-          <Link to={Routes.products} className={style.linkPage}>
+          <Link to={Routes.products} className={className}>
             Products
           </Link>
         </ListItem>
         {isLoggedIn ? (
           <div>
             <ListItem button>
-              <Link to={Routes.cart} className={style.linkPage}>
+              <Link to={Routes.cart} className={className}>
                 Cart
               </Link>
             </ListItem>
-            {/* <ListItem button>
-              <Link to={Routes.logout} className={style.linkPage}>
-                Logout
-              </Link>
-            </ListItem> */}
           </div>
         ) : (
           <ListItem button>
-            <Link to={Routes.login} className={style.linkPage}>
+            <Link to={Routes.login} className={className}>
               Login
             </Link>
           </ListItem>
         )}
 
-        {isAdmin ? (
+        {isLoggedIn && isAdmin ? (
           <div>
             <ListItem button>
-              <Link to={Routes.admin} className={style.linkPage}>
+              <Link to={Routes.admin} className={className}>
                 Admin
               </Link>
             </ListItem>
@@ -60,4 +58,4 @@ const CustomDrawer: FC = () => {
   );
 };
 
-export default CustomDrawer;
+export default NavLinks;
