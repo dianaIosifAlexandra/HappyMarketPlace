@@ -1,25 +1,22 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useAppSelector } from '../../hooks/appSelector';
 import {
   selectIsLoggedIn,
   selectUsername,
 } from '../../store/selectors/UserSelector';
-import { Link } from 'react-router-dom';
-
-import Button from '@mui/material/Button';
 import PersonIcon from '@mui/icons-material/Person';
 import Tooltip from '@mui/material/Tooltip';
 
 import style from './Profile.module.scss';
 import Logout from '../../components/Logout/Logout';
-import { Routes } from '../../helpers/Routes';
+import Login from '../../components/Login/Login';
 
 const Profile: FC = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const username = useAppSelector(selectUsername);
 
   return (
-    <div>
+    <>
       {isLoggedIn ? (
         <div className={style.loggedInUserContainer}>
           <Tooltip title={username}>
@@ -30,13 +27,13 @@ const Profile: FC = () => {
           </div>
         </div>
       ) : (
-        <Button color="inherit">
-          <Link to={Routes.login} className={style.loginBtn}>
-            Login
-          </Link>
-        </Button>
+        <div>
+          <Login />
+        </div>
       )}
-    </div>
+
+      {/* Todo: un button de login pentru cazul in care user-ul nu este autentificat si scot Login-ul din links pt acesti useri */}
+    </>
   );
 };
 export default Profile;

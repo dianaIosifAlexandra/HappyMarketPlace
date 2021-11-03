@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { Routes } from '../../helpers/Routes';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import { ConstructionOutlined } from '@mui/icons-material';
 
 interface Props {
   className: string;
@@ -35,12 +34,18 @@ const NavLinks: FC<Props> = ({ className }) => {
             </ListItem>
           </div>
         ) : (
+          <div></div>
+        )}
+        {/*
+        {!isLoggedIn && isFromDrawer ? (
           <ListItem button>
             <Link to={Routes.login} className={className}>
               Login
             </Link>
           </ListItem>
-        )}
+        ) : (
+          <div></div>
+        )} */}
 
         {isLoggedIn && isAdmin ? (
           <div>

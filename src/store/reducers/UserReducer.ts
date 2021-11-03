@@ -1,16 +1,18 @@
+import {
+  getFromLocalStorage,
+  getIsAdminFromStorage,
+  StorageKey,
+} from '../../services/StorageService';
 import { UserActionTypes, UserActions } from './../actions/UserActions';
 import { UserState } from './../types/types';
 
 const initialState: UserState = {
   username: '',
-  token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
+  token: getFromLocalStorage(StorageKey.Token),
   errorMsg: '',
-  isAdmin: localStorage.getItem('isAdmin')
-    ? !!localStorage.getItem('isAdmin')
-    : false,
+  isAdmin: getIsAdminFromStorage(),
 };
 
-//todo: rename userActions
 const UserReducer = (state = initialState, action: UserActions) => {
   switch (action.type) {
     case UserActionTypes.LoginUserSucces: {
