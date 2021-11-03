@@ -5,10 +5,10 @@ import {
   getCategoriesRequest,
   getCategoriesSuccess,
   getCategoriesFailure,
-} from '../actions/CategoryAction';
+} from '../actions/CategoriesAction';
 import { AppThunk } from '../types/types';
 
-export const getCategorieThunk =
+export const getCategoriesThunk =
   (): AppThunk => (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
     dispatch(getCategoriesRequest());
 

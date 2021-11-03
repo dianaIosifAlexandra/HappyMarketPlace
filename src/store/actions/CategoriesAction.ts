@@ -1,4 +1,3 @@
-import { getProductListRequest } from './ProductListAction';
 export enum CategoriesActionType {
   GetCategoriesRequest = 'CATEGORIES--GET-CATEGORIES-REQUEST',
   GetCategoriesSuccess = 'CATEGORIES--GET-CATEGORIES-SUCCESS',
@@ -43,7 +42,7 @@ export const getCategoriesFailure = (error: string): GetCategoriesFailure => ({
   },
 });
 
-export type CategoryAction =
+export type CategoriesAction =
   | GetCategoriesRequest
   | GetCategoriesSuccess
   | GetCategoriesFailure;

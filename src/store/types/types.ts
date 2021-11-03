@@ -1,4 +1,4 @@
-import { CategoryAction } from '../actions/CategoryAction';
+import { CategoriesAction } from '../actions/CategoriesAction';
 import { UserActions } from './../actions/UserActions';
 import { AnyAction } from 'redux';
 import { ThunkAction } from 'redux-thunk';
@@ -36,7 +36,7 @@ export interface AppState {
   product: ProductListState;
   user: UserState;
   cart: CartState;
-  category: CategoriesState;
+  categories: CategoriesState;
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -50,4 +50,4 @@ export type AppActions =
   | ProductListActions
   | UserActions
   | CartActions
-  | CategoryAction;
+  | CategoriesAction;

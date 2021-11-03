@@ -1,7 +1,7 @@
 import {
-  CategoryAction,
+  CategoriesAction,
   CategoriesActionType,
-} from '../actions/CategoryAction';
+} from '../actions/CategoriesAction';
 import { CategoriesState } from '../types/types';
 
 const initialState: CategoriesState = {
@@ -10,9 +10,9 @@ const initialState: CategoriesState = {
   error: null,
 };
 
-const CategoryReducer = (
+const CategoriesReducer = (
   state = initialState,
-  action: CategoryAction
+  action: CategoriesAction
 ): CategoriesState => {
   switch (action.type) {
     case CategoriesActionType.GetCategoriesRequest: {
@@ -43,4 +43,4 @@ const CategoryReducer = (
   }
 };
 
-export default CategoryReducer;
+export default CategoriesReducer;

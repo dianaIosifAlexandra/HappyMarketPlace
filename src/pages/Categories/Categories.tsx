@@ -4,7 +4,7 @@ import CategoryItem from '../../components/Category/CategoryItem';
 import Layout from '../../components/Layout/Layout';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectCategories } from '../../store/selectors/CategoriesSelector';
-import { getCategorieThunk } from '../../store/thunks/CategoryThunk';
+import { getCategoriesThunk } from '../../store/thunks/Categorieshunk';
 import List from '@mui/material/List';
 
 import style from './Categories.module.scss';
@@ -14,7 +14,7 @@ const Categories: FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategorieThunk());
+    dispatch(getCategoriesThunk());
   }, [dispatch]);
 
   return (

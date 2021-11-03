@@ -7,7 +7,6 @@ const httpService = axios.create({
   },
 });
 
-//todo add async - await
 export async function httpGet<T>(url: string, params?: string[]) {
   const response = await httpService.get<T>(url, { params: params?.join('&') });
 
