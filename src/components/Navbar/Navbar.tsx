@@ -56,7 +56,7 @@ const Navbar: FC = () => {
           <Box className={style.userContainer}>
             <Hidden smDown>
               <NavLinks
-                className={`${style.linkPage} ${style.linksContainer}`}
+                className={`${style.linkPage} ${style.linksContainer} ${style.loginPagesContainer}`}
               />
             </Hidden>
             <Profile />

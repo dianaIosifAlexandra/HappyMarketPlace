@@ -13,7 +13,7 @@ const initialState: UserState = {
   isAdmin: getIsAdminFromStorage(),
 };
 
-const UserReducer = (state = initialState, action: UserActions) => {
+const UserReducer = (state = initialState, action: UserActions): UserState => {
   switch (action.type) {
     case UserActionTypes.LoginUserSucces: {
       const { token, username, isAdmin } = action.payload;
@@ -29,7 +29,7 @@ const UserReducer = (state = initialState, action: UserActions) => {
     case UserActionTypes.LoginUserFailure: {
       return {
         ...state,
-        loginError: action.payload.msg,
+        errorMsg: action.payload.msg,
         isAdmin: false,
       };
     }

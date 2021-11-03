@@ -4,4 +4,5 @@ export enum Routes {
   admin = '/admin',
   cart = '/cart',
   logout = '/logout',
+  categories = '/categories',
 }

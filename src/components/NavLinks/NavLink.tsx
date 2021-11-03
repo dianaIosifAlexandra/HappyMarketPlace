@@ -26,10 +26,15 @@ const NavLinks: FC<Props> = ({ className }) => {
           </Link>
         </ListItem>
         {isLoggedIn ? (
-          <div>
+          <div className={className}>
             <ListItem button>
               <Link to={Routes.cart} className={className}>
                 Cart
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to={Routes.categories} className={className}>
+                Categories
               </Link>
             </ListItem>
           </div>

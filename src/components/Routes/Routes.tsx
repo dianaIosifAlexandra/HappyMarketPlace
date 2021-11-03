@@ -7,6 +7,7 @@ import Products from '../../pages/Products/Products';
 import Cart from '../../pages/Cart/Cart';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
+import Categories from '../../pages/Categories/Categories';
 
 const ReactRouter: FC = () => {
   const location = useLocation();
@@ -32,6 +33,9 @@ const ReactRouter: FC = () => {
       </Route>
       <Route exact path={Routes.cart}>
         <Cart />
+      </Route>
+      <Route exact path={Routes.categories}>
+        <Categories />
       </Route>
     </Switch>
   );

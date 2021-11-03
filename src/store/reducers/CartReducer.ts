@@ -15,7 +15,7 @@ const calculateTotalPrice = (productsList: CartProduct[]) => {
   );
 };
 
-const CartReducer = (state = initialState, action: CartActions) => {
+const CartReducer = (state = initialState, action: CartActions): CartState => {
   switch (action.type) {
     case CartActionTypes.AddToCart: {
       const index: number = state.addedProducts.findIndex(

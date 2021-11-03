@@ -10,7 +10,10 @@ const initialState: ProductListState = {
   error: null,
 };
 
-const ProductReducer = (state = initialState, action: ProductListActions) => {
+const ProductReducer = (
+  state = initialState,
+  action: ProductListActions
+): ProductListState => {
   switch (action.type) {
     case ProductActionTypes.GetProductListRequest: {
       return {

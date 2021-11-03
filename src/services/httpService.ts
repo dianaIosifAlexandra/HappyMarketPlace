@@ -8,8 +8,10 @@ const httpService = axios.create({
 });
 
 //todo add async - await
-export function httpGet<T>(url: string, params?: string[]) {
-  return httpService.get<T>(url, { params: params?.join('&') });
+export async function httpGet<T>(url: string, params?: string[]) {
+  const response = await httpService.get<T>(url, { params: params?.join('&') });
+
+  return response;
 }
 
 export async function httpPost<T, B>(url: string, body?: B) {
