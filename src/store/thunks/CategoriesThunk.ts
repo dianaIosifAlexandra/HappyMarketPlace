@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import CategoryService from '../../services/categoryService';
+import CategoryService from '../../services/CategoryService';
 import {
   getCategoriesRequest,
   getCategoriesSuccess,

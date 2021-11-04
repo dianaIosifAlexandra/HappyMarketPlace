@@ -4,7 +4,7 @@ import CategoryItem from '../../components/Category/CategoryItem';
 import Layout from '../../components/Layout/Layout';
 import { useAppSelector } from '../../hooks/appSelector';
 import { selectCategories } from '../../store/selectors/CategoriesSelector';
-import { getCategoriesThunk } from '../../store/thunks/Categorieshunk';
+import { getCategoriesThunk } from '../../store/thunks/CategoriesThunk';
 import List from '@mui/material/List';
 
 import style from './Categories.module.scss';
