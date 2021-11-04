@@ -13,6 +13,7 @@ import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
 import { addToCart } from '../../store/actions/CartActions';
 import { useAppDispatch } from '../../hooks/actionDispatcher';
 import CartProduct from '../../models/CartProduct';
+import Typography from '@mui/material/Typography';
 
 interface Props {
   product: ProductModel;
@@ -60,6 +61,9 @@ const Product: FC<Props> = ({ product }) => {
         <div className={style.ratingContainer}>{product.price}$</div>
         <div>
           <RatingView ratingValue={Math.round(product.rating.rate)} />
+        </div>
+        <div>
+          <Typography variant="subtitle2">{product.category}</Typography>
         </div>
         <div>
           {isLoggedIn ? (

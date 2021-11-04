@@ -1,11 +1,12 @@
 import { httpGet } from './httpService';
+import ProductModel from '../models/Product';
 
 const getCategories = () => {
   return httpGet<string[]>('/products/categories');
 };
 
 const getProductsByCategory = (category: string) => {
-  return httpGet<string[]>('/products/category/' + category);
+  return httpGet<ProductModel[]>('/products/category/' + category);
 };
 
 const CategoryService = {

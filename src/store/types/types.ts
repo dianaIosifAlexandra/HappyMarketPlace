@@ -1,3 +1,4 @@
+import { ProductsInCategoryAction } from './../actions/ProductsInCategoryAction';
 import { CategoriesAction } from '../actions/CategoriesAction';
 import { UserActions } from './../actions/UserActions';
 import { AnyAction } from 'redux';
@@ -32,11 +33,18 @@ export interface CategoriesState {
   error: null | string;
 }
 
+export interface ProductsInCategoryState {
+  productsInCategory: ProductModel[];
+  isLoading: boolean;
+  error: null | string;
+}
+
 export interface AppState {
   product: ProductListState;
   user: UserState;
   cart: CartState;
   categories: CategoriesState;
+  productsInCategory: ProductsInCategoryState;
 }
 
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -50,4 +58,5 @@ export type AppActions =
   | ProductListActions
   | UserActions
   | CartActions
-  | CategoriesAction;
+  | CategoriesAction
+  | ProductsInCategoryAction;

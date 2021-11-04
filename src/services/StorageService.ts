@@ -1,6 +1,7 @@
 export enum StorageKey {
   Token = 'token',
   IsAdmin = 'isAdmin',
+  Category = 'category',
 }
 
 export const updateLocalStorage = (key: StorageKey, value: string) => {
