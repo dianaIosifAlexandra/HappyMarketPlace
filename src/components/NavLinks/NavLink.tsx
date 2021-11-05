@@ -5,9 +5,9 @@ import {
   selectIsLoggedIn,
 } from '../../store/selectors/UserSelector';
 import { Link } from 'react-router-dom';
-import { Routes } from '../../helpers/Routes';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import { Routes } from '../../Routes';
 
 interface Props {
   className: string;

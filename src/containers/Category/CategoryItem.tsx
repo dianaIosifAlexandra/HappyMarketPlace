@@ -6,22 +6,19 @@ import CategoryIcon from '@mui/icons-material/Category';
 import Button from '@mui/material/Button';
 
 import style from './CategoryItem.module.scss';
-import { getProductsInCategoryThunk } from '../../store/thunks/ProductsInCategoryThunk';
-import { useDispatch } from 'react-redux';
-import ProductsInCategory from '../../pages/ProductsInCategory/ProductsInCategory';
+import { useHistory } from 'react-router-dom';
+import { Routes } from '../../Routes';
 
 interface Props {
   category: string;
 }
 
 const CategoryItem: FC<Props> = ({ category }) => {
-  const dispatch: Dispatch<any> = useDispatch();
-  const [showProducts, setShowProducts] = useState(false);
+  const history = useHistory();
 
   const handleClick = useCallback(() => {
-    dispatch(getProductsInCategoryThunk(category));
-    setShowProducts(true);
-  }, [dispatch]);
+    history.push(Routes.productsInCategories.replace(':category', category));
+  }, []);
 
   return (
     <div className={style.categoryContainer}>
@@ -31,7 +28,6 @@ const CategoryItem: FC<Props> = ({ category }) => {
           <Typography variant="subtitle2">{category.toUpperCase()}</Typography>
         </Paper>
       </Button>
-      {showProducts ? <ProductsInCategory /> : <div></div>}
     </div>
   );
 };

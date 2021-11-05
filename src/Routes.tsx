@@ -1,13 +1,23 @@
 import React, { FC } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
-import Admin from '../../pages/Admin/Admin';
-import { Routes } from '../../helpers/Routes';
-import Login from '../../pages/Login/Login';
-import Products from '../../pages/Products/Products';
-import Cart from '../../pages/Cart/Cart';
-import { useAppSelector } from '../../hooks/appSelector';
-import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
-import Categories from '../../pages/Categories/Categories';
+import { useAppSelector } from './hooks/appSelector';
+import Admin from './pages/Admin/Admin';
+import Cart from './pages/Cart/Cart';
+import Categories from './pages/Categories/Categories';
+import Login from './pages/Login/Login';
+import Products from './pages/Products/Products';
+import ProductsInCategory from './pages/ProductsInCategory/ProductsInCategory';
+import { selectIsLoggedIn } from './store/selectors/UserSelector';
+
+export enum Routes {
+  products = '/',
+  login = '/login',
+  admin = '/admin',
+  cart = '/cart',
+  logout = '/logout',
+  categories = '/categories',
+  productsInCategories = '/products/category/:category',
+}
 
 const ReactRouter: FC = () => {
   const location = useLocation();
@@ -36,6 +46,9 @@ const ReactRouter: FC = () => {
       </Route>
       <Route exact path={Routes.categories}>
         <Categories />
+      </Route>
+      <Route exact path={Routes.productsInCategories}>
+        <ProductsInCategory />
       </Route>
     </Switch>
   );

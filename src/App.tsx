@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import './App.scss';
-import ReactRouter from './components/Routes/Routes';
+import ReactRouter from './Routes';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './style/theme/theme';
 

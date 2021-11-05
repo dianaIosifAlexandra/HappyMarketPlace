@@ -1,9 +1,9 @@
 import React, { FC, useCallback } from 'react';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router';
-import { Routes } from '../../helpers/Routes';
 
 import style from './Login.module.scss';
+import { Routes } from '../../Routes';
 
 const Login: FC = () => {
   const history = useHistory();

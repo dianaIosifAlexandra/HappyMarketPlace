@@ -11,8 +11,7 @@ import { selectIsLoggedIn } from '../../store/selectors/UserSelector';
 import { useDispatch } from 'react-redux';
 import { loginUserThunk } from '../../store/thunks/UserThunk';
 import { Redirect } from 'react-router';
-import { Routes } from '../../helpers/Routes';
-
+import { Routes } from '../../Routes';
 const Login: FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
