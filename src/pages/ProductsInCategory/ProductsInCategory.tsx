@@ -1,6 +1,5 @@
 import React, { Dispatch, FC, useEffect } from 'react';
 import { useAppSelector } from '../../hooks/appSelector';
-import { selectProductsInCategory } from '../../store/selectors/ProductsInCategorySelector';
 import List from '@mui/material/List';
 import Product from '../../components/Product/Product';
 import Layout from '../../components/Layout/Layout';
@@ -9,6 +8,7 @@ import style from './ProductsInCategory.module.scss';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getProductsInCategoryThunk } from '../../store/thunks/ProductThunk';
+import { selectProductsInCategory } from '../../store/selectors/ProductSelector';
 
 const ProductsInCategory: FC = () => {
   const dispatch: Dispatch<any> = useDispatch();
