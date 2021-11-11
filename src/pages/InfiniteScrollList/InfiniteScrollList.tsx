@@ -16,7 +16,6 @@ const InfiniteScrollList: FC = () => {
   // innerHeight = interior height of the window
   // document.documentElement.scrollTop =  Get the number of pixels scrolled.
   // HTMLElement.offsetHeight = integer obtained from the height of an element, including vertical padding and borders
-
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop !==
@@ -42,6 +41,7 @@ const InfiniteScrollList: FC = () => {
     // la scroll se va apela mereu metoda handleScroll
     // ma abonez la event-ul de scroll cu handleScroll ca si listener
     window.addEventListener('scroll', handleScroll);
+    console.log('ScrollEffect');
 
     //prin acest return se face un cleanup a "effectelor" pe care eu le folosesc
     return () => window.removeEventListener('scroll', handleScroll);
@@ -50,9 +50,9 @@ const InfiniteScrollList: FC = () => {
   useEffect(() => {
     if (!isFetching) {
       return;
+    } else {
+      fetchMoreListItems();
     }
-
-    fetchMoreListItems();
   }, [isFetching]);
 
   return (

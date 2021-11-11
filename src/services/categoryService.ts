@@ -25,7 +25,7 @@ const getProductsByCategoryMock = (): ProductModel[] => {
     },
   };
 
-  const productsMock = Array.from({ length: 3 }, (value) => (value = product));
+  const productsMock = Array.from({ length: 10 }, (value) => (value = product));
 
   // console.log('productsMock: ', productsMock);
 
