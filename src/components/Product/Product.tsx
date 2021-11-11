@@ -15,7 +15,6 @@ import { useAppDispatch } from '../../hooks/actionDispatcher';
 import CartProduct from '../../models/CartProduct';
 import Typography from '@mui/material/Typography';
 import { selectIsProductsLoading } from '../../store/selectors/ProductSelector';
-import CircularProgress from '@mui/material/CircularProgress';
 
 interface Props {
   product: ProductModel;
@@ -34,7 +33,6 @@ const convertToCartProduct = (product: ProductModel): CartProduct => {
 const Product: FC<Props> = ({ product }) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
   const dispatch: Dispatch<any> = useAppDispatch();
-  const isProductsLoading = useAppSelector(selectIsProductsLoading);
 
   const handleAddToCart = useCallback(() => {
     dispatch(addToCart(convertToCartProduct(product)));
@@ -42,50 +40,44 @@ const Product: FC<Props> = ({ product }) => {
 
   return (
     <div className={style.productContainer}>
-      {!isProductsLoading ? (
-        <Paper className={style.paper} elevation={3}>
-          <div className={style.imgContainer}>
-            <img className={style.productImage} src={product.image} />
-          </div>
-          <div>{product.title}</div>
-          <div>
-            <ShowMoreText
-              lines={2}
-              more="Show more"
-              less="Show less"
-              className="content-css"
-              anchorClass="my-anchor-css-class"
-              expanded={false}
-              width={280}
-              truncatedEndingComponent={'... '}
+      <Paper className={style.paper} elevation={3}>
+        <div className={style.imgContainer}>
+          <img className={style.productImage} src={product.image} />
+        </div>
+        <div>{product.title}</div>
+        <div>
+          <ShowMoreText
+            lines={2}
+            more="Show more"
+            less="Show less"
+            className="content-css"
+            anchorClass="my-anchor-css-class"
+            expanded={false}
+            width={280}
+            truncatedEndingComponent={'... '}
+          >
+            {product.description}
+          </ShowMoreText>
+        </div>
+        <div className={style.ratingContainer}>{product.price}$</div>
+        <div>
+          <RatingView ratingValue={Math.round(product.rating.rate)} />
+        </div>
+        <div>
+          <Typography variant="subtitle2">{product.category}</Typography>
+        </div>
+        <div>
+          {isLoggedIn && (
+            <Button
+              variant="contained"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={handleAddToCart}
             >
-              {product.description}
-            </ShowMoreText>
-          </div>
-          <div className={style.ratingContainer}>{product.price}$</div>
-          <div>
-            <RatingView ratingValue={Math.round(product.rating.rate)} />
-          </div>
-          <div>
-            <Typography variant="subtitle2">{product.category}</Typography>
-          </div>
-          <div>
-            {isLoggedIn ? (
-              <Button
-                variant="contained"
-                startIcon={<AddShoppingCartIcon />}
-                onClick={handleAddToCart}
-              >
-                Add to cart
-              </Button>
-            ) : (
-              <div></div>
-            )}
-          </div>
-        </Paper>
-      ) : (
-        <CircularProgress />
-      )}
+              Add to cart
+            </Button>
+          )}
+        </div>
+      </Paper>
     </div>
   );
 };

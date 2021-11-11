@@ -4,6 +4,7 @@ import { useAppSelector } from './hooks/appSelector';
 import Admin from './pages/Admin/Admin';
 import Cart from './pages/Cart/Cart';
 import Categories from './pages/Categories/Categories';
+import InfiniteScrollList from './pages/InfiniteScrollList/InfiniteScrollList';
 import Login from './pages/Login/Login';
 import Products from './pages/Products/Products';
 import ProductsInCategory from './pages/ProductsInCategory/ProductsInCategory';
@@ -17,6 +18,7 @@ export enum Routes {
   logout = '/logout',
   categories = '/categories',
   productsInCategories = '/products/category/:category',
+  mockProducts = '/mockProducts',
 }
 
 const ReactRouter: FC = () => {
@@ -49,6 +51,9 @@ const ReactRouter: FC = () => {
       </Route>
       <Route exact path={Routes.productsInCategories}>
         <ProductsInCategory />
+      </Route>
+      <Route exact path={Routes.mockProducts}>
+        <InfiniteScrollList />
       </Route>
     </Switch>
   );

@@ -25,7 +25,12 @@ const NavLinks: FC<Props> = ({ className }) => {
             Products
           </Link>
         </ListItem>
-        {isLoggedIn ? (
+        <ListItem button>
+          <Link to={Routes.mockProducts} className={className}>
+            Mock Products
+          </Link>
+        </ListItem>
+        {isLoggedIn && (
           <div className={className}>
             <ListItem button>
               <Link to={Routes.cart} className={className}>
@@ -38,21 +43,9 @@ const NavLinks: FC<Props> = ({ className }) => {
               </Link>
             </ListItem>
           </div>
-        ) : (
-          <div></div>
         )}
-        {/*
-        {!isLoggedIn && isFromDrawer ? (
-          <ListItem button>
-            <Link to={Routes.login} className={className}>
-              Login
-            </Link>
-          </ListItem>
-        ) : (
-          <div></div>
-        )} */}
 
-        {isLoggedIn && isAdmin ? (
+        {isLoggedIn && isAdmin && (
           <div>
             <ListItem button>
               <Link to={Routes.admin} className={className}>
@@ -60,8 +53,6 @@ const NavLinks: FC<Props> = ({ className }) => {
               </Link>
             </ListItem>
           </div>
-        ) : (
-          <div></div>
         )}
       </List>
     </div>

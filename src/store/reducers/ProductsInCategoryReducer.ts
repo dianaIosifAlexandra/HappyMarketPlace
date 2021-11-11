@@ -18,6 +18,7 @@ const ProductsInCategoryReducer = (
     case ProductsInCategoryActionType.GetProductsInCategoryRequest: {
       return {
         ...state,
+        productsInCategory: [],
         isLoading: true,
       };
     }
