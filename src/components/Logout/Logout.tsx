@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { logoutThunk } from '../../store/thunks/UserThunk';
 
 const Logout: FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch: Dispatch<any> = useAppDispatch();
 
   const handleLogout = useCallback(() => {

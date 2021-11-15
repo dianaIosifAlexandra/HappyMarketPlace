@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
 
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';

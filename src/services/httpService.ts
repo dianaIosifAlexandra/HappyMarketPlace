@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const httpService = axios.create({
   baseURL: 'https://fakestoreapi.com',
@@ -7,13 +7,19 @@ const httpService = axios.create({
   },
 });
 
-export async function httpGet<T>(url: string, params?: string[]) {
+export async function httpGet<T>(
+  url: string,
+  params?: string[]
+): Promise<AxiosResponse<T>> {
   const response = await httpService.get<T>(url, { params: params?.join('&') });
 
   return response;
 }
 
-export async function httpPost<T, B>(url: string, body?: B) {
+export async function httpPost<T, B>(
+  url: string,
+  body?: B
+): Promise<T | { error: string }> {
   try {
     const response = await httpService.post<T>(url, body);
 

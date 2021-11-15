@@ -14,7 +14,15 @@ interface LoginCredentials {
   password: string;
 }
 
-export const login = (username: string, password: string) => {
+type LoginResponse = Promise<
+  | LoginSuccessResponse
+  | LoginErrorResponse
+  | {
+      error: string;
+    }
+>;
+
+export const login = (username: string, password: string): LoginResponse => {
   return httpPost<LoginSuccessResponse | LoginErrorResponse, LoginCredentials>(
     '/auth/login',
     {

@@ -4,7 +4,7 @@ export enum StorageKey {
   Category = 'category',
 }
 
-export const updateLocalStorage = (key: StorageKey, value: string) => {
+export const updateLocalStorage = (key: StorageKey, value: string): void => {
   localStorage.setItem(key, value);
 };
 

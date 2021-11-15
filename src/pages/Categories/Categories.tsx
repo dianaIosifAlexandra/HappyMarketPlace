@@ -11,6 +11,7 @@ import style from './Categories.module.scss';
 
 const Categories: FC = () => {
   const categories = useAppSelector(selectCategories);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {

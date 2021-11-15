@@ -15,11 +15,12 @@ import {
 import CircularProgress from '@mui/material/CircularProgress';
 
 const ProductsInCategory: FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch: Dispatch<any> = useDispatch();
   const productsInCategory = useAppSelector(selectProductsInCategory);
   const isProductsLoading = useAppSelector(selectIsProductsLoading);
 
-  let { category } = useParams<{ category: string }>();
+  const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
     dispatch(getProductsInCategoryThunk(category));

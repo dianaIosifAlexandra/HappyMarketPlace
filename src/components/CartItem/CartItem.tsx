@@ -25,6 +25,7 @@ interface Props {
 }
 
 const CartItem: FC<Props> = ({ product }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch: Dispatch<any> = useAppDispatch();
 
   const handleChange = useCallback(

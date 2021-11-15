@@ -40,7 +40,6 @@ export const getProductsInCategoryThunk =
 
     CategoryService.getProductsByCategory(category)
       .then((response) => {
-        console.log(response.data);
         dispatch(getProductsInCategorySuccess(response.data));
       })
       .catch((error) => {

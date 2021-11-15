@@ -16,7 +16,7 @@ const Login: FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
-  // eslint-disable  @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch: Dispatch<any> = useDispatch();
 
   const handleChangeUsername = useCallback((event) => {

@@ -14,7 +14,6 @@ import { addToCart } from '../../store/actions/CartActions';
 import { useAppDispatch } from '../../hooks/actionDispatcher';
 import CartProduct from '../../models/CartProduct';
 import Typography from '@mui/material/Typography';
-import { selectIsProductsLoading } from '../../store/selectors/ProductSelector';
 
 interface Props {
   product: ProductModel;
@@ -32,6 +31,7 @@ const convertToCartProduct = (product: ProductModel): CartProduct => {
 
 const Product: FC<Props> = ({ product }) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch: Dispatch<any> = useAppDispatch();
 
   const handleAddToCart = useCallback(() => {
