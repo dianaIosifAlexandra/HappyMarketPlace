@@ -58,7 +58,7 @@ const InfiniteScrollList: FC = () => {
     <Layout>
       <List className={style.productsList}>
         {listItems.map((item) => {
-          return <Product product={item} key={Math.random()} />;
+          return <Product product={item} key={item.id} />;
         })}
       </List>
       {isFetching && 'Fetching more list items...'}
