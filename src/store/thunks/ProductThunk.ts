@@ -14,6 +14,16 @@ import {
 } from '../actions/ProductsInCategoryAction';
 import { AppThunk } from '../types/types';
 
+// Selectorii - ii folosesc pentru a consuma date din state
+// Thunks - call la backend
+
+// Thunk are un efect - care face dispatch la o actiune care dup-aia face dispatch la un reducer
+
+// folders structure:
+// Components = componente de sine statatoare care primesc date prin props
+// Containers = componente care folosesc state-ul de Redux
+// Pages - componente care au rounting (poate sa foloseasca Redux, dar nu e un must)
+
 export const getProductListThunk =
   (): AppThunk => (dispatch: ThunkDispatch<unknown, unknown, AnyAction>) => {
     dispatch(getProductListRequest());

@@ -36,7 +36,7 @@ const getProductsByCategoryMock = (): ProductModel[] => {
       category: 'Category ' + getRandomNumber(0, 100),
       description: 'description ' + getRandomNumber(0, 100),
       // https://picsum.photos/200/300 -- imi da aceeasi imagine pt toate obiectele
-      image: images[getRandomNumber(0, images.length)],
+      image: images[getRandomNumber(0, images.length - 1)],
       price: getRandomNumber(0, 1000),
       rating: {
         rate: getRandomNumber(1, 5),
