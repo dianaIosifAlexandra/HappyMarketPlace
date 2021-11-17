@@ -1,0 +1,39 @@
+@import '../../style/variables.scss';
+
+.shoppingCart {
+  position: fixed;
+  bottom: 1rem;
+  right: 0.5rem;
+  z-index: 100;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.shoppingCart:hover .itemsNumber {
+  background-color: #cb2c32;
+  border-radius: 50%;
+  // de calculat in rem
+  margin: 0 0 0 50px;
+  position: absolute;
+  font-weight: $bold;
+  font-size: 0.9rem;
+  color: #ffffff;
+  width: 1.7rem;
+  height: 1.6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cartIcon.cartIcon.cartIcon {
+  width: 3rem;
+  height: 3rem;
+  color: $color-base-green;
+}
+
+.itemsNumber {
+  display: none;
+}

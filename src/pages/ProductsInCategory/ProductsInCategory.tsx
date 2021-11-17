@@ -13,6 +13,7 @@ import {
   selectProductsInCategory,
 } from '../../store/selectors/ProductSelector';
 import CircularProgress from '@mui/material/CircularProgress';
+import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
 
 const ProductsInCategory: FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,6 +42,7 @@ const ProductsInCategory: FC = () => {
           <Product product={product} key={product.id} />
         ))}
       </List>
+      <ShoppingCart />
     </Layout>
   );
 };
